@@ -1,7 +1,26 @@
-// import { useState } from 'react'
+import { useState, useEffect } from 'react';
 // import './App.css'
 
 function App() {
+
+  const [ posts, setPosts ] = useState([]);
+
+  useEffect( () => {
+
+    fetch('localhost:3000/posts/')
+    .then(response => response.json())
+    .then( data => {
+
+      setPosts(data)
+
+    })
+    .catch(error => {
+
+      console.error(error);
+
+    })
+
+  }, [] )
 
   return (
 
