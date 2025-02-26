@@ -21,16 +21,16 @@ function App() {
   return (
 
     <>
-      <div className="min-h-screen w-full flex flex-col gap-4u items-center py-12u">
+      <div className="w-full max-h-screen p-10u overflow-y-auto">
         {/* tabella */}
-        <table>
+        <table className='bg-smoke-50 w-full h-full overflow-y-scroll'>
           <thead>
-            <tr>
+            <tr className='bg-smoke-200'>
               <th>Id</th>
               <th>Title</th>
-              <th>Content</th>
+              <th className='min-w-[480px]'>Content</th>
               <th>Image</th>
-              <th>Tags</th>
+              <th className='min-w-[200px]'>Tags</th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +42,7 @@ function App() {
                 return (
 
                   <tr key={id}>
+                    <td><p>{id}</p></td>
                     <td><p>{title}</p></td>
                     <td><p>{content}</p></td>
                     <td>
@@ -49,7 +50,17 @@ function App() {
                         <img src={image} alt={title} />
                       </figure>
                     </td>
-                    <td><p>{tags}</p></td>
+                    <td>
+                      {
+                        tags.map( (tag) => {
+
+                          return (
+                            <p className='p-2u border border-smoke-100 rounded-md bg-white mb-2u' key={tag}>{tag}</p>
+                          )
+
+                        } )
+                      }
+                    </td>
                   </tr>
 
                 )

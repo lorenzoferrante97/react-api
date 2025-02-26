@@ -2,6 +2,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
 @import "tailwindcss"; 
 
+/* custom css */
+
+th {
+    text-align: left;
+    padding-inline: 12px;
+    padding-block: 8px;
+}
+
+td {
+    align-content: start;
+    padding-inline: 12px;
+    padding-block: 8px;
+    border-bottom: 1px dashed rgb(128, 128, 128, 0.1);
+    border-right: 1px dashed rgb(128, 128, 128, 0.1);
+}
+
+td:last-child {
+    border-right: 0px;
+}
+
 
 
 
