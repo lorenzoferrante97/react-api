@@ -20,6 +20,10 @@ td {
 
 td:last-child {
     border-right: 0px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
 }
 
 

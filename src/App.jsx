@@ -31,6 +31,7 @@ function App() {
               <th className='min-w-[480px]'>Content</th>
               <th>Image</th>
               <th className='min-w-[200px]'>Tags</th>
+              <th>Operazioni</th>
             </tr>
           </thead>
           <tbody>
@@ -60,6 +61,9 @@ function App() {
 
                         } )
                       }
+                    </td>
+                    <td>
+                      <button className='w-10u aspect-square bg-red-400 text-white rounded-md'>X</button>
                     </td>
                   </tr>
 
