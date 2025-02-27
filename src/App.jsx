@@ -31,8 +31,13 @@ function App() {
   // var dinamica form values
   const [ formValues, setFormValues ] = useState({});
 
+  // onChange function che aggiorna formValues
   const handleField = (e) => {
       const { name, value } = e.target;
+
+      // conversione tags string in array
+      // name === 'tags'
+
       const updateFormValues = {
         ...formValues,
         [name]: value
@@ -53,23 +58,23 @@ function App() {
           <form className='flex flex-col gap-3u max-w-[480px]'>
             {/* post title */}
             <div className='flex flex-col gap-u'>
-              <label htmlFor="postTitle">Titolo post</label>
-              <input type="text" placeholder='Carbonara' name='postTitle' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
+              <label htmlFor="title">Titolo post</label>
+              <input type="text" placeholder='Carbonara' name='title' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
             </div>
             {/* post content */}
             <div className='flex flex-col gap-u'>
-              <label htmlFor="postContent">Contenuto post</label>
-              <textarea type="text" placeholder='Scrivi qui il contenuto del tuo post' name='postContent' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
+              <label htmlFor="content">Contenuto post</label>
+              <textarea type="text" placeholder='Scrivi qui il contenuto del tuo post' name='content' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
             </div>
             {/* post img */}
             <div className='flex flex-col gap-u'>
-              <label htmlFor="postImg">URL immagine</label>
-              <input type="text" placeholder='link immagine' name='postImg' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
+              <label htmlFor="image">URL immagine</label>
+              <input type="text" placeholder='link immagine' name='image' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
             </div>
             {/* post tags */}
             <div className='flex flex-col gap-u'>
-              <label htmlFor="postTags">Tags post</label>
-              <input type="text" placeholder='ricetta, primo, spaghetti...' name='postTags' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
+              <label htmlFor="tags">Tags post</label>
+              <input type="text" placeholder='ricetta, primo, spaghetti...' name='tags' className='border border-smoke-100 rounded-md px-2u py-u' onChange={ handleField } />
             </div>
             {/* submit button */}
             <div className='flex flex-col gap-u'>
