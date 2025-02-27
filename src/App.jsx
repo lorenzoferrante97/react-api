@@ -33,29 +33,49 @@ function App() {
 
   // onChange function che aggiorna formValues
   const handleField = (e) => {
+  
+      const { name, value } = e.target;
+      let updateFormValues = {};
 
-      // recupero ultimo id dei post esistenti per crearne i successivi
-      fetch('http://localhost:3000/posts/')
-      .then(response => response.json())
-      .then( (data) => {
-        
-        let lastId = data.length;
+      // conversione tags string in array
+      if (name === 'tags') {
+        updateFormValues = {
+          ...formValues,
+          [name]: value.split(",")
+        }
 
-        const { name, value } = e.target;
-
-        // conversione tags string in array
-        // name === 'tags'
-
-        const updateFormValues = {
-          id: lastId++,
+      } else {
+        updateFormValues = {
           ...formValues,
           [name]: value
         }
-        console.log("updateFormValues: ", updateFormValues)
-        setFormValues ( updateFormValues )
+      }
 
-      })
-      .catch(error => { console.error(error); })
+      // const updateFormValues = {
+      //   ...formValues,
+      //   [name]: value
+      // }
+      setFormValues ( updateFormValues )
+
+  }
+
+  // POST -> store
+  const addPost = (e) => {
+
+    e.preventDefault();
+
+    console.log(formValues)
+
+    fetch(`http://localhost:3000/posts/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formValues)
+    })
+    .then( getPosts() )
+    // .then(response => response.json())
+    // .then( (data) => { setPosts(data) })
+    .catch(error => { console.error(error); })
+
   }
 
   return (
@@ -68,7 +88,7 @@ function App() {
           <h1 className='font-h1'>Crea un post</h1>
 
           {/* form aggiunta post */}
-          <form className='flex flex-col gap-3u max-w-[480px]'>
+          <form className='flex flex-col gap-3u max-w-[480px]' onSubmit={ addPost }>
             {/* post title */}
             <div className='flex flex-col gap-u'>
               <label htmlFor="title">Titolo post</label>
