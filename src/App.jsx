@@ -33,16 +33,29 @@ function App() {
 
   // onChange function che aggiorna formValues
   const handleField = (e) => {
-      const { name, value } = e.target;
 
-      // conversione tags string in array
-      // name === 'tags'
+      // recupero ultimo id dei post esistenti per crearne i successivi
+      fetch('http://localhost:3000/posts/')
+      .then(response => response.json())
+      .then( (data) => {
+        
+        let lastId = data.length;
 
-      const updateFormValues = {
-        ...formValues,
-        [name]: value
-      }
-      setFormValues ( updateFormValues )
+        const { name, value } = e.target;
+
+        // conversione tags string in array
+        // name === 'tags'
+
+        const updateFormValues = {
+          id: lastId++,
+          ...formValues,
+          [name]: value
+        }
+        console.log("updateFormValues: ", updateFormValues)
+        setFormValues ( updateFormValues )
+
+      })
+      .catch(error => { console.error(error); })
   }
 
   return (
