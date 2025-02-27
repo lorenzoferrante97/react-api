@@ -5,24 +5,22 @@ function App() {
 
   const [ posts, setPosts ] = useState([]);
 
-  useEffect( () => {
+  const getPosts = () => {
 
     fetch('http://localhost:3000/posts/')
     .then(response => response.json())
     .then( (data) => { setPosts(data) })
-    .catch(error => {
+    .catch(error => { console.error(error); })
 
-      console.error(error);
+  }
 
-    })
+  useEffect( () => { getPosts(); }, [] )
 
-  }, [] )
-
+  // elimina post
   const deletePost = (id) => {
 
     fetch(`http://localhost:3000/posts/${id}`, { method: 'DELETE' })
-    .then(response => response.json())
-    .then(  )
+    .then( getPosts() )
     .catch(error => { console.error(error) })
 
   }
