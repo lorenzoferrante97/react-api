@@ -14,6 +14,8 @@ function App() {
     .then( (data) => { setPosts(data) })
     .catch(error => { console.error(error); })
 
+    console.log("ddd")
+
   }
 
   // mostra elenco posts al montaggio comp
@@ -23,7 +25,7 @@ function App() {
   const deletePost = (id) => {
 
     fetch(`http://localhost:3000/posts/${id}`, { method: 'DELETE' })
-    .then( getPosts() )
+    .then( getPosts )
     .catch(error => { console.error(error) })
 
   }
@@ -71,7 +73,7 @@ function App() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formValues)
     })
-    .then( getPosts() )
+    .then( getPosts )
     // .then(response => response.json())
     // .then( (data) => { setPosts(data) })
     .catch(error => { console.error(error); })
