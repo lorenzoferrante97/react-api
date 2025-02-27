@@ -18,6 +18,15 @@ function App() {
 
   }, [] )
 
+  const deletePost = (id) => {
+
+    fetch(`http://localhost:3000/posts/${id}`, { method: 'DELETE' })
+    .then(response => response.json())
+    .then(  )
+    .catch(error => { console.error(error) })
+
+  }
+
   return (
 
     <>
@@ -63,7 +72,10 @@ function App() {
                       }
                     </td>
                     <td>
-                      <button className='w-10u aspect-square bg-red-400 text-white rounded-md'>X</button>
+                      <button
+                      className='w-10u aspect-square bg-red-400 text-white rounded-md'
+                      onClick={ () => deletePost(id)}
+                      >X</button>
                     </td>
                   </tr>
 
